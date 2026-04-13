@@ -12,31 +12,43 @@ const CONFIANCA_CONFIG: Record<NivelConfianca, { label: string; color: string }>
 export function ServicosSanusSection({ servicos }: { servicos: ServicosSanus }) {
   return (
     <section>
-      <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">
+      <h3 className="text-sm font-semibold text-slate-600 uppercase tracking-wide mb-4">
         Uso dos serviços Sanus (período after)
       </h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4">
         <ServicoCard
           titulo="Consulta Digital"
           descricao="Conexa — Consulta Eletiva"
           metrica={servicos.consulta_digital}
-          icon="💻"
+          icon="Telemed"
+        />
+        <ServicoCard
+          titulo="Consulta Física"
+          descricao="Consulta presencial"
+          metrica={servicos.consulta_fisica}
+          icon="Presencial"
         />
         <ServicoCard
           titulo="PS Digital"
           descricao="Conexa — PA Digital"
           metrica={servicos.ps_digital}
-          icon="🚑"
+          icon="PS Dig"
         />
         <ServicoCard
-          titulo="Consulta Física"
-          descricao="Azul — Agendamento presencial"
-          metrica={servicos.consulta_fisica}
-          icon="🏥"
+          titulo="PS Físico"
+          descricao="Pronto atendimento presencial"
+          metrica={servicos.ps_fisico}
+          icon="PS Fis"
+        />
+        <ServicoCard
+          titulo="HealthCoach"
+          descricao="Interações de coaching em saúde"
+          metrica={servicos.healthcoach}
+          icon="Coach"
         />
       </div>
-      <p className="text-xs text-gray-400 mt-3">
-        PS Físico está fora desta versão por baixo volume e semântica ambígua nos dados.
+      <p className="text-xs text-slate-500 mt-3">
+        Os totais representam eventos classificados para o cohort filtrado atual.
       </p>
     </section>
   );
@@ -56,12 +68,12 @@ function ServicoCard({
   const cfg = CONFIANCA_CONFIG[metrica.confianca];
 
   return (
-    <div className="bg-white rounded-xl border border-gray-100 p-4 shadow-sm">
+    <div className="rounded-2xl border border-cyan-100/70 bg-white/85 backdrop-blur p-4 shadow-sm shadow-cyan-100/50">
       <div className="flex items-start justify-between mb-3">
         <div>
-          <span className="text-xl">{icon}</span>
-          <h4 className="font-semibold text-gray-900 mt-1">{titulo}</h4>
-          <p className="text-xs text-gray-400">{descricao}</p>
+          <span className="inline-flex rounded-md bg-cyan-50 px-2 py-0.5 text-[11px] font-semibold text-cyan-700">{icon}</span>
+          <h4 className="font-semibold text-slate-900 mt-2">{titulo}</h4>
+          <p className="text-xs text-slate-500">{descricao}</p>
         </div>
         <span
           className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${cfg.color}`}
@@ -72,22 +84,22 @@ function ServicoCard({
       </div>
 
       <div className="flex items-baseline gap-2 mb-3">
-        <span className="text-2xl font-bold text-gray-900">
+        <span className="text-2xl font-bold text-slate-900">
           {formatNumber(metrica.total)}
         </span>
-        <span className="text-sm text-gray-500">eventos</span>
+        <span className="text-sm text-slate-500">eventos</span>
       </div>
 
-      <div className="bg-gray-50 rounded-lg px-3 py-2 mb-3">
+      <div className="bg-slate-50 rounded-lg px-3 py-2 mb-3">
         <div className="flex justify-between text-xs">
-          <span className="text-gray-500">% do cohort</span>
-          <span className="font-semibold text-gray-900">
+          <span className="text-slate-500">% do cohort</span>
+          <span className="font-semibold text-slate-900">
             {formatPct(metrica.percentual_cohort, 0)}
           </span>
         </div>
-        <div className="mt-1.5 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+        <div className="mt-1.5 h-1.5 bg-slate-200 rounded-full overflow-hidden">
           <div
-            className="h-full bg-blue-500 rounded-full"
+            className="h-full bg-cyan-500 rounded-full"
             style={{ width: `${Math.min(metrica.percentual_cohort * 100, 100)}%` }}
           />
         </div>
@@ -95,11 +107,11 @@ function ServicoCard({
 
       {metrica.top_especialidades && (
         <div>
-          <p className="text-[10px] text-gray-400 uppercase tracking-wide mb-1.5">Top especialidades</p>
+          <p className="text-[10px] text-slate-400 uppercase tracking-wide mb-1.5">Top especialidades</p>
           {metrica.top_especialidades.slice(0, 4).map((e) => (
             <div key={e.label} className="flex justify-between text-xs py-0.5">
-              <span className="text-gray-600">{e.label}</span>
-              <span className="text-gray-500">{formatNumber(e.count)}</span>
+              <span className="text-slate-600">{e.label}</span>
+              <span className="text-slate-500">{formatNumber(e.count)}</span>
             </div>
           ))}
         </div>

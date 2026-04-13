@@ -83,15 +83,15 @@ function DashboardContent() {
   if (!data) {
     if (error) {
       return (
-        <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="max-w-md rounded-md border border-red-300 bg-red-50 px-4 py-6">
+        <div className="flex items-center justify-center min-h-[60vh] px-6">
+          <div className="max-w-md rounded-2xl border border-red-200 bg-white px-5 py-6 shadow-md shadow-red-100/70">
             <h3 className="text-lg font-semibold text-red-900 mb-2">
               Erro ao carregar dashboard
             </h3>
             <p className="text-sm text-red-800 mb-4">{error}</p>
             <button
               onClick={() => window.location.reload()}
-              className="inline-block rounded bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700"
+              className="inline-block rounded-xl bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700"
             >
               Tentar novamente
             </button>
@@ -102,16 +102,16 @@ function DashboardContent() {
 
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="w-6 h-6 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-7 h-7 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
 
   return (
-    <>
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top_right,_rgba(20,184,166,0.18),_transparent_40%),radial-gradient(circle_at_bottom_left,_rgba(14,116,144,0.12),_transparent_35%),linear-gradient(to_bottom,_#f8fbff,_#f4f7fb)]">
       {usingFallback ? (
         <div className="max-w-7xl mx-auto px-6 pt-6">
-          <div className="rounded-md border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+          <div className="rounded-xl border border-amber-200 bg-amber-50/90 px-4 py-3 text-sm text-amber-900 shadow-sm">
             API indisponivel no momento. Exibindo dados mock para nao bloquear a navegacao.
           </div>
         </div>
@@ -128,6 +128,6 @@ function DashboardContent() {
         <ClusterExplorer clusters={data.clusters} />
         <ClusterDetalhe data={data} />
       </main>
-    </>
+    </div>
   );
 }

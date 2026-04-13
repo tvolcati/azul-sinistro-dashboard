@@ -123,6 +123,16 @@ export function getMockDashboardData(
           { label: "Outros", count: Math.round(1514 * fator) },
         ],
       },
+      ps_fisico: {
+        total: Math.round(436 * fator),
+        percentual_cohort: Math.round(436 * fator) / total_titulares,
+        confianca: "media",
+      },
+      healthcoach: {
+        total: Math.round(887 * fator),
+        percentual_cohort: Math.round(887 * fator) / total_titulares,
+        confianca: "media",
+      },
     },
     plano_com_sanus: {
       mesmo_dia: Math.round(312 * fator),

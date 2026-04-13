@@ -5,34 +5,36 @@ import { formatNumber, formatDate } from "@/lib/formatters";
 
 export function HeroCohort({ cohort }: { cohort: CohortSummary }) {
   return (
-    <section className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-8 rounded-2xl">
+    <section className="relative overflow-hidden rounded-3xl px-6 py-8 text-white shadow-lg shadow-cyan-200/50 bg-gradient-to-br from-sky-700 via-cyan-600 to-emerald-500">
+      <div className="pointer-events-none absolute -top-16 -right-10 h-52 w-52 rounded-full bg-white/20 blur-2xl" />
+      <div className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-indigo-900/20 blur-2xl" />
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-wrap items-start justify-between gap-6">
           <div>
-            <p className="text-blue-200 text-sm font-medium uppercase tracking-wide mb-1">
+            <p className="text-cyan-100 text-xs font-semibold uppercase tracking-widest mb-2">
               Cohort analisado
             </p>
             <h2 className="text-4xl font-bold tabular-nums">
               {formatNumber(cohort.total_titulares)}
             </h2>
-            <p className="text-blue-100 mt-1">titulares</p>
+            <p className="text-cyan-50/90 mt-1">titulares</p>
           </div>
 
           <div className="flex gap-8">
             <div>
-              <p className="text-blue-300 text-xs uppercase tracking-wide">Before</p>
+              <p className="text-cyan-100 text-xs uppercase tracking-wide">Before</p>
               <p className="text-white font-semibold">
                 {fmtPeriodo(cohort.periodo_before)}
               </p>
             </div>
             <div>
-              <p className="text-blue-300 text-xs uppercase tracking-wide">After</p>
+              <p className="text-cyan-100 text-xs uppercase tracking-wide">After</p>
               <p className="text-white font-semibold">
                 {fmtPeriodo(cohort.periodo_after)}
               </p>
             </div>
             <div>
-              <p className="text-blue-300 text-xs uppercase tracking-wide">Atualizado</p>
+              <p className="text-cyan-100 text-xs uppercase tracking-wide">Atualizado</p>
               <p className="text-white font-semibold">
                 {formatDate(cohort.ultimo_refresh)}
               </p>
@@ -40,7 +42,7 @@ export function HeroCohort({ cohort }: { cohort: CohortSummary }) {
           </div>
         </div>
 
-        <p className="mt-4 text-blue-200 text-xs border-t border-blue-500 pt-3">
+        <p className="mt-4 text-cyan-50/90 text-xs border-t border-white/30 pt-3">
           ℹ️ {cohort.nota}
         </p>
       </div>

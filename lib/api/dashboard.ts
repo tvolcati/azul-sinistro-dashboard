@@ -11,6 +11,7 @@ function buildQueryString(filtros: FiltrosAtivos): string {
   for (const v of filtros.estado ?? []) params.append("estado", v);
   for (const v of filtros.tipo_plano ?? []) params.append("tipo_plano", v);
   for (const v of filtros.cronicidade ?? []) params.append("cronicidade", v);
+  for (const v of filtros.servico_sanus ?? []) params.append("servico_sanus", v);
 
   const qs = params.toString();
   return qs ? `?${qs}` : "";

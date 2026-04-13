@@ -7,6 +7,7 @@ export interface FiltrosAtivos {
   estado?: string[];
   tipo_plano?: string[];
   cronicidade?: string[];
+  servico_sanus?: string[];
 }
 
 // ── Cohort ───────────────────────────────────────────────────────────────────
@@ -58,6 +59,8 @@ export interface ServicosSanus {
   consulta_digital: ServicoMetrica;
   ps_digital: ServicoMetrica;
   consulta_fisica: ServicoMetrica;
+  ps_fisico: ServicoMetrica;
+  healthcoach: ServicoMetrica;
 }
 
 // ── Plano com a Sanus ─────────────────────────────────────────────────────────
@@ -81,6 +84,8 @@ export type DimensaoCluster =
   | "estado"
   | "tipo_plano"
   | "cronicidade";
+
+export type DimensaoFiltro = DimensaoCluster | "servico_sanus";
 
 export interface ClusterGrupo {
   label: string;

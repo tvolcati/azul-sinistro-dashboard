@@ -7,12 +7,12 @@ import {
   useCallback,
   type ReactNode,
 } from "react";
-import type { FiltrosAtivos, DimensaoCluster } from "@/types/dashboard";
+import type { FiltrosAtivos, DimensaoFiltro } from "@/types/dashboard";
 
 interface FiltersContextValue {
   filtros: FiltrosAtivos;
-  setFiltro: (dimensao: DimensaoCluster, values: string[]) => void;
-  clearFiltro: (dimensao: DimensaoCluster) => void;
+  setFiltro: (dimensao: DimensaoFiltro, values: string[]) => void;
+  clearFiltro: (dimensao: DimensaoFiltro) => void;
   clearAll: () => void;
   hasFilters: boolean;
 }
@@ -23,7 +23,7 @@ export function FiltersProvider({ children }: { children: ReactNode }) {
   const [filtros, setFiltros] = useState<FiltrosAtivos>({});
 
   const setFiltro = useCallback(
-    (dimensao: DimensaoCluster, values: string[]) => {
+    (dimensao: DimensaoFiltro, values: string[]) => {
       setFiltros((prev) => ({
         ...prev,
         [dimensao]: values.length ? values : undefined,
@@ -32,7 +32,7 @@ export function FiltersProvider({ children }: { children: ReactNode }) {
     []
   );
 
-  const clearFiltro = useCallback((dimensao: DimensaoCluster) => {
+  const clearFiltro = useCallback((dimensao: DimensaoFiltro) => {
     setFiltros((prev) => {
       const next = { ...prev };
       delete next[dimensao];

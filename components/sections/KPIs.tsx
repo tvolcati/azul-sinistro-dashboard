@@ -8,7 +8,7 @@ export function KPIs({ sinistro }: { sinistro: SinistroBeforeAfter }) {
 
   return (
     <section>
-      <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">
+      <h3 className="text-sm font-semibold text-slate-600 uppercase tracking-wide mb-4">
         Sinistro — Before vs After
       </h3>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -71,17 +71,17 @@ function KPICard({
 
   return (
     <div
-      className="bg-white rounded-xl border border-gray-100 p-4 shadow-sm"
+      className="rounded-2xl border border-slate-100 bg-white/85 p-4 shadow-sm shadow-slate-200/60 backdrop-blur"
       title={tooltip}
     >
-      <p className="text-xs text-gray-500 mb-3">{label}</p>
+      <p className="text-xs text-slate-500 mb-3">{label}</p>
       <div className="flex items-baseline gap-2 mb-1">
-        <span className="text-lg font-bold text-gray-900">{after}</span>
+        <span className="text-lg font-bold text-slate-900">{after}</span>
         <span className={`text-xs font-semibold px-1.5 py-0.5 rounded-full ${color} ${bg}`}>
           {formatPct(delta)}
         </span>
       </div>
-      <p className="text-xs text-gray-400">before: {before}</p>
+      <p className="text-xs text-slate-400">before: {before}</p>
     </div>
   );
 }
