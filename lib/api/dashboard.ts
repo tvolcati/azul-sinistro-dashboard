@@ -1,7 +1,6 @@
 import type { DashboardPayload, FiltrosAtivos } from "@/types/dashboard";
 
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_SINISTRALITY_API_BASE_URL ?? "http://localhost:8000";
+const API_BASE_URL = "/api/dashboard/azul";
 
 function buildQueryString(filtros: FiltrosAtivos): string {
   const params = new URLSearchParams();
@@ -21,7 +20,7 @@ export async function fetchDashboardData(
   filtros: FiltrosAtivos = {}
 ): Promise<DashboardPayload> {
   const query = buildQueryString(filtros);
-  const response = await fetch(`${API_BASE_URL}/v1/dashboard/azul${query}`, {
+  const response = await fetch(`${API_BASE_URL}${query}`, {
     method: "GET",
     cache: "no-store",
   });
